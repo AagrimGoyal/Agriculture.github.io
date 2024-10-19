@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture Products</title>
+    <link rel="stylesheet" href="Products.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Agriculture Products by School Team</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="Contact_US.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>Our Agriculture Innovations</h2>
+            <p>Our school team has developed agricultural products aimed at promoting sustainable farming, urban gardening, and environmental awareness. Here are the products we proudly present:</p>
+
+            <h3>1. NOOB DIY Kits</h3>
+            <img src="https://m.media-amazon.com/images/I/71FG0vnSF3L._AC_UF1000,1000_QL80_.jpg" alt="NOOB DIY Kits">
+            <p>The <strong>NOOB DIY Kit</strong> is designed for budding farmers and gardening enthusiasts. It provides all the essentials needed to kickstart your journey into sustainable agriculture.</p>
+            <ul>
+                <li><strong>Contents:</strong>
+                    <ul>
+                        <li><strong>Solid Manure (250g):</strong> This organic fertilizer is derived from natural sources, rich in nutrients, and improves soil fertility, helping your plants thrive.</li>
+                        <li><strong>5 Pairs of Gloves:</strong> Durable and comfortable gloves designed for gardening tasks, protecting your hands from dirt and injury while ensuring comfort during use.</li>
+                        <li><strong>Mini Hoe:</strong> A compact and easy-to-use gardening tool, perfect for planting, weeding, and cultivating the soil.</li>
+                    </ul>
+                </li>
+                <li><strong>Price:</strong> ₹2000</li>
+                <li><strong>Benefits:</strong>
+                    <ul>
+                        <li>Promotes organic gardening practices, reducing chemical use.</li>
+                        <li>Ideal for urban gardeners with limited space, encouraging sustainable living.</li>
+                        <li>Supports environmental sustainability by using eco-friendly materials.</li>
+                        <li>Encourages hands-on learning and creativity in gardening.</li>
+                    </ul>
+                </li>
+                <li><strong>Ideal For:</strong>
+                    <ul>
+                        <li>School projects focusing on sustainable practices.</li>
+                        <li>Urban dwellers wanting to grow their own plants.</li>
+                        <li>Individuals interested in learning about gardening.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>2. Terrarium Kits</h3>
+            <img src="https://media.istockphoto.com/id/621240084/photo/beautiful-jar-with-live-forest-with-self-ecosystem.jpg?s=612x612&w=0&k=20&c=IGeob0pcFtgDCFWsU-T9Fm5Oo8-C9e0UeB1QuYldduc=" alt="Terrarium">
+            <p>Our <strong>Terrarium Kits</strong> offer a unique opportunity to create a self-sustaining ecosystem. Perfect for those who want to bring a bit of nature indoors, these kits come in various sizes and styles to suit any space.</p>
+            <ul>
+                <li><strong>Contents:</strong>
+                    <ul>
+                        <li>A selection of hardy plants suitable for terrariums (e.g., moss, ferns).</li>
+                        <li>Decorative elements like stones, figurines, and soil.</li>
+                        <li>Instructions for setting up and maintaining your terrarium, ensuring longevity and beauty.</li>
+                    </ul>
+                </li>
+                <li><strong>Pricing:</strong> Prices vary based on size and location. Please contact us for specific pricing.</li>
+                <li><strong>Benefits:</strong>
+                    <ul>
+                        <li>Low maintenance and air-purifying, improving indoor air quality.</li>
+                        <li>Enhances indoor aesthetics, making it a beautiful decor piece.</li>
+                        <li>Educational tool for children and adults to learn about ecosystems and plant care.</li>
+                        <li>Provides a calming presence, reducing stress and promoting mental well-being.</li>
+                    </ul>
+                </li>
+                <li><strong>Ideal For:</strong>
+                    <ul>
+                        <li>Office spaces wanting to add greenery.</li>
+                        <li>Families looking for educational activities.</li>
+                        <li>Gift options for plant lovers.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Button to go to Payment Page -->
+            <form action="payment.html" method="get">
+                <button type="submit">Buy Now</button>
+            </form>
+        </section>
+
+        <!-- Payment Section -->
+        <section class="payment-section">
+            <h2>Purchase Our Products</h2>
+            <form id="paymentForm">
+                <label for="productSelect">Select Product:</label>
+                <select id="productSelect" name="product">
+                    <option value="noob">NOOB DIY Kit</option>
+                    <option value="terrarium">Terrarium Kit</option>
+                </select>
+
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" name="paymentMethod">
+                    <option value="offline">Offline Payment</option>
+                </select>
+
+                <div id="offlinePaymentOptions">
+                    <p>Please visit our nearest store for cash or bank transfer options. You can also contact us directly to arrange an offline payment.</p>
+                </div>
+
+                <button type="submit">Submit Order</button>
+            </form>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

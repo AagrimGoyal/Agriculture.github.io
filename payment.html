@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Choose Your Payment Method</h1>
+    <form id="paymentOptionsForm">
+        <label for="paymentMethod">Select Payment Method:</label>
+        <select id="paymentMethod" name="paymentMethod" onchange="showPaymentForm()">
+            <option value="">Select</option>
+            <option value="credit">Credit Card</option>
+            <option value="debit">Debit Card</option>
+            <option value="netbanking">Net Banking</option>
+            <option value="upi">UPI</option>
+        </select>
+    </form>
+
+    <!-- Credit Card Payment Layout -->
+    <div id="creditCardForm" class="payment-form" style="display:none;">
+        <h2>CREDIT CARD PAYMENT</h2>
+        <label for="creditCardType">Card Type:</label>
+        <input type="text" id="creditCardType"><br>
+        <label for="creditCardNumber">Card Number:</label>
+        <input type="text" id="creditCardNumber"><br>
+        <label for="creditCardExpiry">Expiration Date (MM/YY):</label>
+        <input type="text" id="creditCardExpiry"><br>
+        <label for="creditCardCvv">Security Code (CVV):</label>
+        <input type="text" id="creditCardCvv"><br>
+        <label for="creditCardName">Name on Card:</label>
+        <input type="text" id="creditCardName"><br>
+        <label for="billingAddress">Billing Address:</label>
+        <input type="text" id="billingAddress"><br>
+        <label for="paymentAmount">Payment Amount:</label>
+        <input type="text" id="paymentAmount"><br>
+        <button type="submit">Submit Payment</button>
+    </div>
+
+    <!-- Debit Card Payment Layout -->
+    <div id="debitCardForm" class="payment-form" style="display:none;">
+        <h2>DEBIT CARD PAYMENT</h2>
+        <label for="debitCardType">Card Type:</label>
+        <input type="text" id="debitCardType"><br>
+        <label for="debitCardNumber">Card Number:</label>
+        <input type="text" id="debitCardNumber"><br>
+        <label for="debitCardExpiry">Expiration Date (MM/YY):</label>
+        <input type="text" id="debitCardExpiry"><br>
+        <label for="debitCardCvv">Security Code (CVV):</label>
+        <input type="text" id="debitCardCvv"><br>
+        <label for="debitCardName">Name on Card:</label>
+        <input type="text" id="debitCardName"><br>
+        <label for="billingAddress">Billing Address:</label>
+        <input type="text" id="billingAddress"><br>
+        <label for="paymentAmount">Payment Amount:</label>
+        <input type="text" id="paymentAmount"><br>
+        <label for="atmPassword">PIN/ATM Password (if required):</label>
+        <input type="password" id="atmPassword"><br>
+        <button type="submit">Submit Payment</button>
+    </div>
+
+    <!-- Net Banking Payment Layout -->
+    <div id="netBankingForm" class="payment-form" style="display:none;">
+        <h2>NET BANKING PAYMENT</h2>
+        <label for="selectBank">Select Bank:</label>
+        <select id="selectBank">
+            <option value="hdfc">HDFC Bank</option>
+            <option value="sbi">State Bank of India</option>
+            <option value="icici">ICICI Bank</option>
+            <option value="axis">Axis Bank</option>
+        </select><br>
+        <label for="accountNumber">Username/Account Number:</label>
+        <input type="text" id="accountNumber"><br>
+        <label for="netbankingPassword">Password:</label>
+        <input type="password" id="netbankingPassword"><br>
+        <label for="paymentAmountNet">Payment Amount:</label>
+        <input type="text" id="paymentAmountNet"><br>
+        <button type="submit">Submit Payment</button>
+    </div>
+
+    <!-- UPI Payment Layout -->
+    <div id="upiForm" class="payment-form" style="display:none;">
+        <h2>UPI PAYMENT</h2>
+        <label for="upiId">UPI ID:</label>
+        <input type="text" id="upiId"><br>
+        <label for="upiPin">UPI PIN:</label>
+        <input type="password" id="upiPin"><br>
+        <button type="submit">Submit Payment</button><br>
+        <h3>Or Scan QR Code</h3>
+        <img src="qr-code-placeholder.png" alt="Scan QR Code">
+    </div>
+
+    <script>
+        // Function to display the appropriate payment form based on selection
+        function showPaymentForm() {
+            var selectedPayment = document.getElementById("paymentMethod").value;
+
+            // Hide all forms initially
+            document.getElementById("creditCardForm").style.display = "none";
+            document.getElementById("debitCardForm").style.display = "none";
+            document.getElementById("netBankingForm").style.display = "none";
+            document.getElementById("upiForm").style.display = "none";
+
+            // Show the appropriate form based on the user's selection
+            if (selectedPayment === "credit") {
+                document.getElementById("creditCardForm").style.display = "block";
+            } else if (selectedPayment === "debit") {
+                document.getElementById("debitCardForm").style.display = "block";
+            } else if (selectedPayment === "netbanking") {
+                document.getElementById("netBankingForm").style.display = "block";
+            } else if (selectedPayment === "upi") {
+                document.getElementById("upiForm").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
+
