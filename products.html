@@ -4,117 +4,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agriculture Products</title>
-    <link rel="stylesheet" href="Products.css">
+    <title>Products Page</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e1f7d5;
+            /* Light background color for the page */
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #2d3436;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header .school {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #ffbe76;
+        }
+
+        /* Products Section */
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            /* Background color for the products container */
+            border-radius: 10px;
+        }
+
+        .product {
+            flex: 1 1 calc(33.33% - 20px);
+            /* 3 items per row (adjustable) */
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            background-color: #ffffff;
+            /* Default background color for each product */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product:nth-child(odd) {
+            background-color: #f9f9f9;
+            /* Light background for odd products */
+        }
+
+        .product:nth-child(even) {
+            background-color: #f1f1f1;
+            /* Light background for even products */
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product h3 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            margin-bottom: 10px;
+        }
+
+        .product button {
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product button:hover {
+            background-color: #16a085;
+        }
+
+        /* Ensure responsiveness */
+        @media (max-width: 768px) {
+            .product {
+                flex: 1 1 calc(50% - 20px);
+                /* 2 items per row on medium-sized screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product {
+                flex: 1 1 calc(100% - 20px);
+                /* 1 item per row on smaller screens */
+            }
+        }
+    </style>
 </head>
 
 <body>
-
     <header>
-        <h1>Agriculture Products by School Team</h1>
+        <div class="school">
+            <img src="https://media.licdn.com/dms/image/v2/D4D0BAQHnHaZGeNr0fA/company-logo_200_200/company-logo_200_200/0/1691732037049?e=2147483647&v=beta&t=BM_XDflmeJTUvPdl44fW7O77ypek4rYzBFRpistssJs"
+                alt="School Logo" class="logo">
+            <h1 class="team-name">SilverLine Prestige School</h1>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="Contact_US.html">Contact</a></li>
+                <li><a href="Contact_US.html">Contact Us</a></li>
+                <li><a href="comment.html">Review</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="container">
-        <section class="section">
-            <h2>Our Agriculture Innovations</h2>
-            <p>Our school team has developed agricultural products aimed at promoting sustainable farming, urban gardening, and environmental awareness. Here are the products we proudly present:</p>
+    <!-- Products Section -->
+    <section class="products-container">
+        <div class="product">
+            <h3>Terrarium</h3>
+            <p><strong>Ideal For:</strong> Indoor decoration, gifting</p>
+            <p><strong>Best For:</strong> Home gardeners</p>
+            <p><strong>Advantages:</strong> Easy maintenance, eco-friendly</p>
+            <p><strong>Price:</strong> ₹149</p>
+            <p><strong>About:</strong> A terrarium is a small, glass container used to grow plants indoors. It
+                creates a mini ecosystem, ideal for both decorative and functional purposes. There are two main types:
+                open terrariums for dry plants like cacti and succulents, and closed terrariums for plants that thrive
+                in humidity, such as ferns and mosses. To make a terrarium, start with a container, add drainage stones,
+                then place activated charcoal, soil, and finally, the plants. You can decorate it with small stones or
+                figurines. Terrariums are easy to maintain and enhance the natural beauty of indoor spaces.</p>
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQY1hFKULKtdGsnjz3B7oGIifX59LN2W4Js8srdyYV-pbLkS4qVbLDFl5k9-9RiHiBvbcqlwgoHvrBizygUXfgbPNo2_zEHlu-vs-roMHVPGzl9ejbMXm2U&usqp=CAE"
+                height="100" width="100" alt="Terrarium">
 
-            <h3>1. NOOB DIY Kits</h3>
-            <img src="https://m.media-amazon.com/images/I/71FG0vnSF3L._AC_UF1000,1000_QL80_.jpg" alt="NOOB DIY Kits">
-            <p>The <strong>NOOB DIY Kit</strong> is designed for budding farmers and gardening enthusiasts. It provides all the essentials needed to kickstart your journey into sustainable agriculture.</p>
-            <ul>
-                <li><strong>Contents:</strong>
-                    <ul>
-                        <li><strong>Solid Manure (250g):</strong> This organic fertilizer is derived from natural sources, rich in nutrients, and improves soil fertility, helping your plants thrive.</li>
-                        <li><strong>5 Pairs of Gloves:</strong> Durable and comfortable gloves designed for gardening tasks, protecting your hands from dirt and injury while ensuring comfort during use.</li>
-                        <li><strong>Mini Hoe:</strong> A compact and easy-to-use gardening tool, perfect for planting, weeding, and cultivating the soil.</li>
-                    </ul>
-                </li>
-                <li><strong>Price:</strong> ₹2000</li>
-                <li><strong>Benefits:</strong>
-                    <ul>
-                        <li>Promotes organic gardening practices, reducing chemical use.</li>
-                        <li>Ideal for urban gardeners with limited space, encouraging sustainable living.</li>
-                        <li>Supports environmental sustainability by using eco-friendly materials.</li>
-                        <li>Encourages hands-on learning and creativity in gardening.</li>
-                    </ul>
-                </li>
-                <li><strong>Ideal For:</strong>
-                    <ul>
-                        <li>School projects focusing on sustainable practices.</li>
-                        <li>Urban dwellers wanting to grow their own plants.</li>
-                        <li>Individuals interested in learning about gardening.</li>
-                    </ul>
-                </li>
-            </ul>
+            <button class="buy-button" onclick="addToCart('Terrarium', 149)">Buy Now</button>
+        </div>
 
-            <h3>2. Terrarium Kits</h3>
-            <img src="https://media.istockphoto.com/id/621240084/photo/beautiful-jar-with-live-forest-with-self-ecosystem.jpg?s=612x612&w=0&k=20&c=IGeob0pcFtgDCFWsU-T9Fm5Oo8-C9e0UeB1QuYldduc=" alt="Terrarium">
-            <p>Our <strong>Terrarium Kits</strong> offer a unique opportunity to create a self-sustaining ecosystem. Perfect for those who want to bring a bit of nature indoors, these kits come in various sizes and styles to suit any space.</p>
-            <ul>
-                <li><strong>Contents:</strong>
-                    <ul>
-                        <li>A selection of hardy plants suitable for terrariums (e.g., moss, ferns).</li>
-                        <li>Decorative elements like stones, figurines, and soil.</li>
-                        <li>Instructions for setting up and maintaining your terrarium, ensuring longevity and beauty.</li>
-                    </ul>
-                </li>
-                <li><strong>Pricing:</strong> Prices vary based on size and location. Please contact us for specific pricing.</li>
-                <li><strong>Benefits:</strong>
-                    <ul>
-                        <li>Low maintenance and air-purifying, improving indoor air quality.</li>
-                        <li>Enhances indoor aesthetics, making it a beautiful decor piece.</li>
-                        <li>Educational tool for children and adults to learn about ecosystems and plant care.</li>
-                        <li>Provides a calming presence, reducing stress and promoting mental well-being.</li>
-                    </ul>
-                </li>
-                <li><strong>Ideal For:</strong>
-                    <ul>
-                        <li>Office spaces wanting to add greenery.</li>
-                        <li>Families looking for educational activities.</li>
-                        <li>Gift options for plant lovers.</li>
-                    </ul>
-                </li>
-            </ul>
+        <div class="product">
+            <h3>DIY Kit</h3>
+            <p><strong>Includes:</strong> Seed, Manure, Pot</p>
+            <p><strong>Price:</strong> ₹200</p>
+            <p><strong>About:</strong> A DIY planting kit that includes manure, a pot, and seeds is a simple and
+                convenient gardening package designed to help you grow your own plants at home. It typically comes with
+                a small pot, organic manure for enriching the soil, and seeds of flowers, herbs, or vegetables. The kit
+                also includes instructions on how to plant and care for your seeds, making it ideal for beginners. To
+                use the kit, you fill the pot with a layer of manure and soil, plant the seeds, water them gently, and
+                place the pot in a suitable location for sunlight. It’s a perfect way to start gardening sustainably
+                while adding a personal touch of greenery to your space.</p>
+            <img src="https://m.media-amazon.com/images/I/611g7qwtzyL.jpg" height="100" width="100" alt="DIY Kit">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKeDRRcfc5eRJCRfUIqspW6OVbTbdIAc8nQYhvSnmAx3kWF2aYSNqBcJCRFRIZKWcKvPA&usqp=CAU"
+                height="100" width="100" alt="DIY Kit">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtthfGElaKLUQ96wjCNmTxmW8Zlbe-xevF2A&s"
+                height="100" width="100" alt="DIY Kit">
 
-            <!-- Button to go to Payment Page -->
-            <form action="payment.html" method="get">
-                <button type="submit">Buy Now</button>
-            </form>
-        </section>
+            <button class="buy-button" onclick="addToCart('DIY Kit', 200)">Buy Now</button>
+        </div>
 
-        <!-- Payment Section -->
-        <section class="payment-section">
-            <h2>Purchase Our Products</h2>
-            <form id="paymentForm">
-                <label for="productSelect">Select Product:</label>
-                <select id="productSelect" name="product">
-                    <option value="noob">NOOB DIY Kit</option>
-                    <option value="terrarium">Terrarium Kit</option>
-                </select>
+        <div class="product">
+            <h3>Manure</h3>
+            <p><strong>Price:</strong> ₹100 - 1kg</p>
+            <p><strong>About:</strong> Manure is organic matter, typically from animals, used as a natural fertilizer to
+                improve soil quality. It provides essential nutrients like nitrogen, phosphorus, and potassium, which
+                are vital for plant growth. Manure helps enhance soil structure, retains moisture, and promotes healthy
+                root development. One of the most common types is **cow manure**, which is nutrient-rich and great for
+                vegetables. Composted manure is decomposed for safer use and is a great option for gardens. It is an
+                eco-friendly, organic alternative to chemical fertilizers, making it a popular choice for sustainable
+                gardening.</p>
+            <img src="https://m.media-amazon.com/images/I/611g7qwtzyL.jpg" height="100" width="100" alt="Manure">
+            <button class="buy-button" onclick="addToCart('Manure', 100)">Buy Now</button>
+        </div>
+    </section>
 
-                <label for="paymentMethod">Payment Method:</label>
-                <select id="paymentMethod" name="paymentMethod">
-                    <option value="offline">Offline Payment</option>
-                </select>
-
-                <div id="offlinePaymentOptions">
-                    <p>Please visit our nearest store for cash or bank transfer options. You can also contact us directly to arrange an offline payment.</p>
-                </div>
-
-                <button type="submit">Submit Order</button>
-            </form>
-        </section>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 
 </html>
