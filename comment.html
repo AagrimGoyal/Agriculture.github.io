@@ -247,8 +247,6 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="products.html"> Products </a></li>
                 <li><a href="Contact_US.html">Contact Us</a></li>
-
-
             </ul>
         </nav>
     </header>
@@ -340,7 +338,9 @@
                 var star = document.createElement('span');
                 star.classList.add('star');
                 star.innerHTML = '★';
-                if (i <= rating) star.classList.add('selected');
+                if (i <= rating) {
+                    star.classList.add('selected');
+                }
                 starsDiv.appendChild(star);
             }
             commentDiv.appendChild(starsDiv);
@@ -382,13 +382,17 @@
             localStorage.setItem('comments', JSON.stringify(comments));
 
             // Reset the form
+            document.getElement
+            // Reset the form
             document.getElementById('commentForm').reset();
             selectedRating = 0;
-            highlightStars(selectedRating);
+            highlightStars(0); // Reset the stars
         });
 
-        // Load existing comments when the page is loaded
-        loadComments();
+        // Load comments on page load
+        window.onload = function () {
+            loadComments();
+        }
     </script>
 
 </body>
