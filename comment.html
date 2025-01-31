@@ -1,1 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Comments Page with Star Rating</title>
+    <style>
+        /* Background color animation */
+        @keyframes backgroundChange {
+            0% {
+                background: linear-gradient(135deg, #3f51b5, #2196f3);
+            }
+
+            25% {
+                background: linear-gradient(135deg, #673ab7, #512da8);
+            }
+
+            50% {
+                background: linear-gradient(135deg, #ff9800, #ff5722);
+            }
+
+            75% {
+                background: linear-gradient(135deg, #009688, #4caf50);
+            }
+
+            100% {
+                background: linear-gradient(135deg, #3f51b5, #2196f3);
+            }
+        }
+
+        /* New header styles */
+        header {
+            background: #222;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .school,
+        .logo-team {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: 1rem;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: rotate(360deg);
+        }
+
+        .team-name {
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Body and container styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #3f51b5, #2196f3);
+            color: #333;
+            animation: backgroundChange 10s infinite;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #673ab7;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .comment-form {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .comment-form input[type="submit"] {
+            background-color: #673ab7;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .comment-form input[type="submit"]:hover {
+            background-color: #512da8;
+        }
+
+        .comments-section {
+            margin-top: 20px;
+        }
+
+        .comment {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .comment:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .comment strong {
+            font-size: 1.2rem;
+            color: #3f51b5;
+        }
+
+        .comment p {
+            margin-top: 10px;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Fancy Star Rating */
+        .stars {
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .stars span {
+            font-size: 2rem;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        .stars span.selected {
+            color: #ffcc00;
+        }
+
+        .stars span:hover,
+        .stars span:hover~span {
+            color: #ffcc00;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header {
+                font-size: 2rem;
+                padding: 20px;
+            }
+
+            .comment-form input,
+            .comment-form textarea {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="school">
+            <img src="https://media.licdn.com/dms/image/v2/D4D0BAQHnHaZGeNr0fA/company-logo_200_200/company-logo_200_200/0/1691732037049?e=2147483647&v=beta&t=BM_XDflmeJTUvPdl44fW7O77ypek4rYzBFRpistssJs"
+                alt="School Logo" class="logo">
+            <h1 class="team-name">SilverLine Prestige School</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html"> Products </a></li>
+                <li><a href="Contact_US.html">Contact Us</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Leave a Comment</h2>
+
+        <!-- Comment Form -->
+        <form class="comment-form" id="commentForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" rows="4" placeholder="Your Comment" required></textarea>
+
+            <!-- Star Rating -->
+            <div class="stars" id="starRating">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+
+            <input type="submit" value="Post Comment">
+        </form>
+
+        <!-- Display Comments Section -->
+        <div class="comments-section" id="commentsSection">
+            <!-- Comments will be added here dynamically -->
+        </div>
+
+    </div>
+
+    <script>
+        let selectedRating = 0;
+
+        // Add star hover functionality
+        document.querySelectorAll('.stars span').forEach(star => {
+            star.addEventListener('mouseover', () => {
+                let value = parseInt(star.getAttribute('data-value'));
+                highlightStars(value);
+            });
+
+            star.addEventListener('mouseout', () => {
+                highlightStars(selectedRating);
+            });
+
+            star.addEventListener('click', () => {
+                selectedRating = parseInt(star.getAttribute('data-value'));
+                highlightStars(selectedRating);
+            });
+        });
+
+        // Highlight stars up to the selected rating
+        function highlightStars(rating) {
+            document.querySelectorAll('.stars span').forEach(star => {
+                let value = parseInt(star.getAttribute('data-value'));
+                if (value <= rating) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+        }
+
+        // Function to load comments from localStorage
+        function loadComments() {
+            const savedComments = JSON.parse(localStorage.getItem('comments'));
+            if (savedComments) {
+                savedComments.forEach(function (comment) {
+                    displayComment(comment.name, comment.commentText, comment.commentId, comment.rating);
+                });
+            }
+        }
+
+        // Function to display a new comment
+        function displayComment(name, commentText, commentId, rating = 0) {
+            var commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            commentDiv.setAttribute('id', commentId);
+
+            commentDiv.innerHTML = `<strong>${name}:</strong><p>${commentText}</p>`;
+
+            // Add the rating stars
+            var starsDiv = document.createElement('div');
+            starsDiv.classList.add('stars');
+            for (var i = 1; i <= 5; i++) {
+                var star = document.createElement('span');
+                star.classList.add('star');
+                star.innerHTML = '★';
+                if (i <= rating) star.classList.add('selected');
+                starsDiv.appendChild(star);
+            }
+            commentDiv.appendChild(starsDiv);
+
+            // Add delete button
+            var deleteButton = document.createElement('button');
+            deleteButton.innerText = 'Delete';
+            deleteButton.classList.add('delete-button');
+            deleteButton.onclick = function () {
+                deleteComment(commentDiv, commentId);
+            };
+            commentDiv.appendChild(deleteButton);
+
+            document.getElementById('commentsSection').appendChild(commentDiv);
+        }
+
+        // Function to delete a comment
+        function deleteComment(commentDiv, commentId) {
+            commentDiv.remove();
+            let comments = JSON.parse(localStorage.getItem('comments')) || [];
+            comments = comments.filter(comment => comment.commentId !== commentId);
+            localStorage.setItem('comments', JSON.stringify(comments));
+        }
+
+        // Handle comment submission
+        document.getElementById('commentForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name').value;
+            var commentText = document.getElementById('comment').value;
+            var commentId = Date.now();
+
+            // Add the comment with the selected rating
+            displayComment(name, commentText, commentId, selectedRating);
+
+            // Save to localStorage
+            var comments = JSON.parse(localStorage.getItem('comments')) || [];
+            comments.push({name: name, commentText: commentText, commentId: commentId, rating: selectedRating});
+            localStorage.setItem('comments', JSON.stringify(comments));
+
+            // Reset the form
+            document.getElementById('commentForm').reset();
+            selectedRating = 0;
+            highlightStars(selectedRating);
+        });
+
+        // Load existing comments when the page is loaded
+        loadComments();
+    </script>
+
+</body>
+
+</html>
