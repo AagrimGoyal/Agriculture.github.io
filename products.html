@@ -17,7 +17,6 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #e1f7d5;
-            /* Light background color for the page */
             color: #333;
             line-height: 1.6;
             padding: 20px;
@@ -73,33 +72,22 @@
             gap: 20px;
             padding: 20px;
             background-color: #f0f0f0;
-            /* Background color for the products container */
             border-radius: 10px;
         }
 
         .product {
             flex: 1 1 calc(33.33% - 20px);
-            /* 3 items per row (adjustable) */
             box-sizing: border-box;
             border: 1px solid #ccc;
             padding: 15px;
             border-radius: 8px;
             text-align: center;
-            background-color: #ffffff;
-            /* Default background color for each product */
+            background: linear-gradient(to bottom, #d1f7c4, #ffffff);
+            /* Gradient effect */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
-        .product:nth-child(odd) {
-            background-color: #f9f9f9;
-            /* Light background for odd products */
-        }
-
-        .product:nth-child(even) {
-            background-color: #f1f1f1;
-            /* Light background for even products */
-        }
 
         .product:hover {
             transform: scale(1.05);
@@ -129,18 +117,61 @@
             background-color: #16a085;
         }
 
-        /* Ensure responsiveness */
+        /* Cart Styles */
+        /* Cart Styles */
+        #cart {
+            background-color: lightblue;
+            /* Light blue background */
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+        }
+
+
+
+        #cart h2 {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #cart-total {
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #001f3f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #003366;
+        }
+
         @media (max-width: 768px) {
             .product {
                 flex: 1 1 calc(50% - 20px);
-                /* 2 items per row on medium-sized screens */
             }
         }
 
         @media (max-width: 480px) {
             .product {
                 flex: 1 1 calc(100% - 20px);
-                /* 1 item per row on smaller screens */
             }
         }
     </style>
@@ -148,10 +179,10 @@
 
 <body>
     <header>
-        <div class="school">
-            <img src="https://media.licdn.com/dms/image/v2/D4D0BAQHnHaZGeNr0fA/company-logo_200_200/company-logo_200_200/0/1691732037049?e=2147483647&v=beta&t=BM_XDflmeJTUvPdl44fW7O77ypek4rYzBFRpistssJs"
-                alt="School Logo" class="logo">
-            <h1 class="team-name">SilverLine Prestige School</h1>
+        <div class="logo-team">
+            <img src="https://i.pinimg.com/736x/2b/4f/39/2b4f3984e09c1dae571026e4ced1001b.jpg" alt="Team Logo"
+                class="logo">
+            <h1> Agriculture - Cultivation Crew </h1>
         </div>
         <nav>
             <ul>
@@ -162,7 +193,6 @@
         </nav>
     </header>
 
-    <!-- Products Section -->
     <section class="products-container">
         <div class="product">
             <h3>Terrarium</h3>
@@ -217,6 +247,63 @@
         </div>
     </section>
 
+    <div id="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-content"></ul>
+        <p><strong>Total:</strong> ₹<span id="cart-total">0</span></p>
+        <button onclick="proceedToCheckout()">Place Order</button>
+        <p id="order-status" style="font-weight: bold; color: green; display: none;">Order Sent!</p>
+    </div>
+
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+
+        function addToCart(productName, productPrice) {
+            const existingProduct = cart.find(item => item.name === productName);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({name: productName, price: productPrice, quantity: 1});
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartContent = document.getElementById('cart-content');
+            const cartTotal = document.getElementById('cart-total');
+            cartContent.innerHTML = '';
+            totalPrice = 0;
+
+            cart.forEach((item, index) => {
+                totalPrice += item.price * item.quantity;
+                cartContent.innerHTML += `<li>${item.name} - ₹${item.price} x ${item.quantity} = ₹${item.price * item.quantity} <button onclick="removeFromCart(${index})">Remove</button></li>`;
+            });
+
+            cartTotal.textContent = totalPrice;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function proceedToCheckout() {
+            document.getElementById("order-status").style.display = "block";
+        }
+    </script>
+    <footer>
+        <p>&copy; 2025 Cultivation Crew - Agriculture Team of Silver Line Prestige School. All rights reserved.</p>
+    </footer>
+    <style>
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #2d3436;
+            color: #fff;
+        }
+    </style>
 </body>
 
 </html>
