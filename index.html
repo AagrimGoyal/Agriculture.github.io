@@ -14,80 +14,7 @@
        }
     */
   </style>
-  <script>
-    let cart = [];
-    let totalPrice = 0;
 
-    function addToCart(productName, productPrice) {
-      const existingProduct = cart.find((item) => item.name === productName);
-
-      if (existingProduct) {
-        existingProduct.quantity += 1;
-      } else {
-        cart.push({name: productName, price: productPrice, quantity: 1});
-      }
-
-      updateCart();
-    }
-
-    function updateCart() {
-      const cartContent = document.getElementById('cart-content');
-      const cartTotal = document.getElementById('cart-total');
-      cartContent.innerHTML = '';
-
-      totalPrice = 0;
-
-      cart.forEach((item, index) => {
-        const productTotal = item.price * item.quantity;
-        totalPrice += productTotal;
-
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `
-          <strong>${item.name}</strong> - $${item.price} x ${item.quantity} 
-          = $${productTotal}
-          <button class="btn-small" onclick="changeQuantity(${index}, -1)">-</button>
-          <button class="btn-small" onclick="changeQuantity(${index}, 1)">+</button>
-          <button class="btn-small" onclick="removeFromCart(${index})">Remove</button>
-        `;
-        cartContent.appendChild(listItem);
-      });
-
-      cartTotal.textContent = `Total: $${totalPrice}`;
-    }
-
-    function changeQuantity(index, change) {
-      const product = cart[index];
-      product.quantity += change;
-
-      if (product.quantity <= 0) {
-        cart.splice(index, 1);
-      }
-
-      updateCart();
-    }
-
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCart();
-    }
-
-    function proceedToCheckout() {
-      if (cart.length === 0) {
-        alert('Your cart is empty!');
-        return;
-      }
-
-      document.getElementById('payment-section').style.display = 'block';
-      alert('Please select a payment method to complete your purchase.');
-    }
-
-    function submitPayment(method) {
-      alert(`You have selected ${method} payment method. Total Amount: $${totalPrice}`);
-      cart = [];
-      updateCart();
-      document.getElementById('payment-section').style.display = 'none';
-    }
-  </script>
 </head>
 
 <body class="background">
@@ -100,7 +27,7 @@
     </div>
     <div class="logo-team">
       <img src="https://i.pinimg.com/736x/2b/4f/39/2b4f3984e09c1dae571026e4ced1001b.jpg" alt="Team Logo" class="logo">
-      <h1>Agriculture Team</h1>
+      <h1> Agriculture - Cultivation Crew </h1>
     </div>
     <nav>
       <ul>
@@ -181,8 +108,18 @@
 
 
 
-    <!-- Footer -->
     <footer>
-      <p>&copy; 2024 SilverLine Prestige School. All rights reserved.</p>
+      <p>&copy; 2025 Cultivation Crew - Agriculture Team of Silver Line Prestige School. All rights reserved.</p>
     </footer>
+    <style>
+      footer {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 1rem;
+        background-color: #2d3436;
+        color: #fff;
+      }
+    </style>
 </body>
+
+</html>
